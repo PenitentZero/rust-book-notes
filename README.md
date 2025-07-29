@@ -1,1 +1,1 @@
-# This is what i understand reading the rust programming language book 
+# This is what I understand reading the Rust Programming Language book 
