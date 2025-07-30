@@ -16,7 +16,10 @@ pub fn ownership() {
 
     let mut string_2 = String::from("Hello");
     mut_string(&mut string_2);
-    println!("string_2 mut_string memory address in out of function: {:p}",string_2.as_ptr());
+    println!(
+        "string_2 mut_string memory address in out of function: {:p}",
+        string_2.as_ptr()
+    );
     println!("mutable string: {}", string_2);
 
     let test_string: String = String::from("Hello baby!");
@@ -26,6 +29,27 @@ pub fn ownership() {
     let take_string: String = return_string();
     println!("Memory address of taken_string: {:p}", take_string.as_ptr());
     println!("taken string: {}", take_string);
+
+    let slice_string = String::from("Hello buddy");
+    let _hello_slice = &slice_string[0..5];
+    let _buddy_slice = &slice_string[6..11];
+
+    //These are equal
+    let s = slice_string.len();
+    let _slice1 = [0..s];
+    let _slice2 = [..];
+
+    //Slice example with &str and String
+    let string_4: &str = "Hello, world";
+    let hello_slice = &string_4[..5];
+    let world_slice = &string_4[7..];
+    println!("Hello slice: {}", hello_slice);
+    println!("World slice: {}", world_slice);
+
+    //Slice with Arrays
+    let slice_array: [i8; 5] = [1, 2, 3, 4, 5];
+    let sliced_array = &slice_array[..3];
+    println!("first 3 slice of array: {:?}", sliced_array);
 }
 
 fn calculate_length(string: &String) -> usize {
@@ -50,6 +74,7 @@ fn return_string() -> String {
     println!("Memory address of return_string: {:p}", string.as_ptr());
     string
 }
+
 /*
 Ownership, Garbage collector, explicit allocate and free memory
 Heap and stack.
