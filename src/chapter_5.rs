@@ -107,7 +107,7 @@ pub fn structure() {
 //At this example we use second_student's name, and then we parse it into this function, and then we don't have the ownership of that
 //What is the solution
 //we use &string in parameters so we can access to length and capacity, but we don't own the student.name, and we can't modify it
-//If we use &mut string, we can edit and modify but still we don't own the
+//If we use &mut string, we can edit and modify but still we don't own the variable
 fn struct_parse(student: &StudentInformation) {
     println!("struct parse: {:p}", student.name.as_ptr());
 }
